@@ -1,11 +1,4 @@
-import sqlite3
-import sys
-
-from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QMainWindow
-
-
-template = '''<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -87,19 +80,3 @@ template = '''<?xml version="1.0" encoding="UTF-8"?>
  <resources/>
  <connections/>
 </ui>
-'''
-
-
-class MyWidget(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        f = StringIO(template)
-        uic.loadUi(f, self)
-        self.con = sqlite3.connect("films_db.sqlite")
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = MyWidget()
-    ex.show()
-    sys.exit(app.exec())
